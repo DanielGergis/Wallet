@@ -1,12 +1,12 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
 
-public class UnitTest {
-
-
+public class WalletUnitTest {
 
     @Test
     public void CreatingWalletTest() {
@@ -215,5 +215,42 @@ public class UnitTest {
     	// assert statements
         assertEquals(600, walletTest.getTotalBalance(),0);
         assertEquals(true,result);
+    }
+	
+	@Test
+    public void transactionTransferReversalTest() {
+		Wallet walletTest =new Wallet("daniel","montreal",1,"daniel");
+    	int Account1 = walletTest.AddTransactionAccount("Checking", 500,"daniel");
+    	int Account2 = walletTest.AddTransactionAccount("Saving", 500,"daniel");
+    	
+    	boolean result1 = walletTest.TransferToAccount(Account1, Account2, 100, "daniel");
+    	boolean result2 =walletTest.transactionReversal(walletTest.getTransactions().get(0).getTransactionID(),"daniel");
+
+    	
+    	// assert statements
+        assertEquals(1000, walletTest.getTotalBalance(),0);
+        assertEquals(500, walletTest.getAccount(Account1, "daniel").getBalance(),0);
+        assertEquals(500, walletTest.getAccount(Account2, "daniel").getBalance(),0);
+        assertEquals(true,result1);
+        assertEquals(true,result2);
+    }
+	
+	@Test
+    public void transactionTransferReversalFailTest() {
+		Wallet walletTest =new Wallet("daniel","montreal",1,"daniel");
+    	int Account1 = walletTest.AddTransactionAccount("Checking", 500,"daniel");
+    	int Account2 = walletTest.AddTransactionAccount("Saving", 500,"daniel");
+    	
+    	boolean result1 = walletTest.TransferToAccount(Account1, Account2, 100, "daniel");
+    	walletTest.withdraw(600, Account2, "daniel");
+    	boolean result2 =walletTest.transactionReversal(walletTest.getTransactions().get(0).getTransactionID(),"daniel");
+
+    	
+    	// assert statements
+        assertEquals(400, walletTest.getTotalBalance(),0);
+        assertEquals(400, walletTest.getAccount(Account1, "daniel").getBalance(),0);
+        assertEquals(0, walletTest.getAccount(Account2, "daniel").getBalance(),0);
+        assertEquals(true,result1);
+        assertEquals(false,result2);
     }
 }

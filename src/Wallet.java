@@ -20,7 +20,9 @@ public class Wallet implements WalletLibraryInterface {
 
 	List<TransactionStatement> transactions = new ArrayList<TransactionStatement>();
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getTransactions()
 	 */
 	@Override
@@ -28,7 +30,9 @@ public class Wallet implements WalletLibraryInterface {
 		return transactions;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getTransactionAccounts()
 	 */
 	@Override
@@ -36,7 +40,9 @@ public class Wallet implements WalletLibraryInterface {
 		return transactionAccounts;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getWalletID()
 	 */
 	@Override
@@ -44,7 +50,9 @@ public class Wallet implements WalletLibraryInterface {
 		return walletID;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getHolderName()
 	 */
 	@Override
@@ -52,15 +60,19 @@ public class Wallet implements WalletLibraryInterface {
 		return holderName;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#setHolderName(java.lang.String)
 	 */
 	@Override
 	public void setHolderName(String holderName) {
 		this.holderName = holderName;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getPassword()
 	 */
 	@Override
@@ -68,7 +80,9 @@ public class Wallet implements WalletLibraryInterface {
 		return password;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#setPassword(java.lang.String)
 	 */
 	@Override
@@ -76,7 +90,9 @@ public class Wallet implements WalletLibraryInterface {
 		this.password = password;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getHolderID()
 	 */
 	@Override
@@ -84,7 +100,9 @@ public class Wallet implements WalletLibraryInterface {
 		return holderID;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#setHolderID(int)
 	 */
 	@Override
@@ -92,7 +110,9 @@ public class Wallet implements WalletLibraryInterface {
 		this.holderID = holderID;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getHolderAddress()
 	 */
 	@Override
@@ -100,7 +120,9 @@ public class Wallet implements WalletLibraryInterface {
 		return holderAddress;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#setHolderAddress(java.lang.String)
 	 */
 	@Override
@@ -108,7 +130,9 @@ public class Wallet implements WalletLibraryInterface {
 		this.holderAddress = holderAddress;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getOpenDate()
 	 */
 	@Override
@@ -116,7 +140,9 @@ public class Wallet implements WalletLibraryInterface {
 		return openDate;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getTotalBalance()
 	 */
 	@Override
@@ -124,7 +150,9 @@ public class Wallet implements WalletLibraryInterface {
 		return totalBalance;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getNoOfTransactionAccounts()
 	 */
 	@Override
@@ -145,7 +173,9 @@ public class Wallet implements WalletLibraryInterface {
 		this.password = password;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#calculateTotalBalance()
 	 */
 	@Override
@@ -157,8 +187,11 @@ public class Wallet implements WalletLibraryInterface {
 		return totalBalance;
 	}
 
-	/* (non-Javadoc)
-	 * @see WalletLibraryInterface#AddTransactionAccount(java.lang.String, double, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see WalletLibraryInterface#AddTransactionAccount(java.lang.String, double,
+	 * java.lang.String)
 	 */
 	@Override
 	public int AddTransactionAccount(String name, double balance, String password) {
@@ -166,7 +199,7 @@ public class Wallet implements WalletLibraryInterface {
 			Account account = new TransactionAccount(name, balance, this.walletID);
 			transactionAccounts.put(account.getTransactionAccountID(), account);
 			noOfTransactionAccounts++;
-			totalBalance+=balance;
+			totalBalance += balance;
 			return account.getTransactionAccountID();
 		} else {
 			System.out.println("Incorrect Password");
@@ -174,17 +207,19 @@ public class Wallet implements WalletLibraryInterface {
 		}
 
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#AddTransactionAccount(Account, java.lang.String)
 	 */
 	@Override
-	public void AddTransactionAccount(Account t,String password) {
+	public void AddTransactionAccount(Account t, String password) {
 		if (this.password == password) {
-			if(t.getWalletID()==this.walletID) {
-			transactionAccounts.put(t.getTransactionAccountID(), t);
-			noOfTransactionAccounts++;
-			}
-			else {
+			if (t.getWalletID() == this.walletID) {
+				transactionAccounts.put(t.getTransactionAccountID(), t);
+				noOfTransactionAccounts++;
+			} else {
 				System.out.println("Wallet ID is not matching");
 			}
 		} else {
@@ -192,18 +227,21 @@ public class Wallet implements WalletLibraryInterface {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#withdraw(double, Account, java.lang.String)
 	 */
 	@Override
 	public synchronized boolean withdraw(double amount, Account t, String password) {
 		boolean result = false;
 		if (this.password == password) {
-			if(transactionAccounts.containsValue(t)) {
+			if (transactionAccounts.containsValue(t)) {
 				result = t.withdraw(amount);
-			transactions.add(new TransactionStatement(amount, "withdraw", t.getTransactionAccountID(), this.walletID));
-			calculateTotalBalance();
-			return result;
+				transactions
+						.add(new TransactionStatement(amount, "withdraw", t.getTransactionAccountID(), this.walletID));
+				calculateTotalBalance();
+				return result;
 			} else {
 				System.out.println("This account does not exist in this wallet");
 				return result;
@@ -214,7 +252,9 @@ public class Wallet implements WalletLibraryInterface {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#withdraw(double, int, java.lang.String)
 	 */
 	@Override
@@ -231,7 +271,9 @@ public class Wallet implements WalletLibraryInterface {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#deposit(double, Account, java.lang.String)
 	 */
 	@Override
@@ -254,7 +296,9 @@ public class Wallet implements WalletLibraryInterface {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#deposit(double, int, java.lang.String)
 	 */
 	@Override
@@ -271,8 +315,11 @@ public class Wallet implements WalletLibraryInterface {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see WalletLibraryInterface#TransferToAccount(int, int, double, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see WalletLibraryInterface#TransferToAccount(int, int, double,
+	 * java.lang.String)
 	 */
 	@Override
 	public synchronized boolean TransferToAccount(int fromAccountID, int toAccountID, double amount, String password) {
@@ -301,7 +348,9 @@ public class Wallet implements WalletLibraryInterface {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#print()
 	 */
 	@Override
@@ -311,6 +360,7 @@ public class Wallet implements WalletLibraryInterface {
 		System.out.println("Address: " + holderAddress);
 		System.out.println("Open Date: " + openDate);
 		System.out.println("WalletID: " + walletID);
+		
 		System.out.println("Total Balance: " + totalBalance);
 		for (Account account : transactionAccounts.values()) {
 			System.out.println("Account Name: " + account.getName());
@@ -321,7 +371,9 @@ public class Wallet implements WalletLibraryInterface {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getTransactions(int, int, java.lang.String)
 	 */
 	@Override
@@ -351,8 +403,11 @@ public class Wallet implements WalletLibraryInterface {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see WalletLibraryInterface#transferToWallet(Wallet, int, int, double, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see WalletLibraryInterface#transferToWallet(Wallet, int, int, double,
+	 * java.lang.String)
 	 */
 	@Override
 	public synchronized boolean transferToWallet(Wallet toWallet, int toAccountID, int fromAccountID, double amount,
@@ -381,7 +436,9 @@ public class Wallet implements WalletLibraryInterface {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#verifyBalance(java.lang.String)
 	 */
 	@Override
@@ -399,7 +456,9 @@ public class Wallet implements WalletLibraryInterface {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#compareTo(Wallet)
 	 */
 	@Override
@@ -412,7 +471,9 @@ public class Wallet implements WalletLibraryInterface {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#getAccount(int, java.lang.String)
 	 */
 	@Override
@@ -430,7 +491,9 @@ public class Wallet implements WalletLibraryInterface {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see WalletLibraryInterface#transactionReversal(int, java.lang.String)
 	 */
 	@Override
@@ -447,24 +510,35 @@ public class Wallet implements WalletLibraryInterface {
 			}
 			if (idExist) {
 				String type = transactions.get(index).getType();
-				if (type=="deposit") {
-					withdraw(transactions.get(index).getAmount(),transactions.get(index).getToAccountID(),password);
+				if (type == "deposit") {
+					withdraw(transactions.get(index).getAmount(), transactions.get(index).getToAccountID(), password);
 					transactions.get(index).setStatus("Reversed");
 					return true;
 				}
-				if (type=="withdraw") {
-					deposit(transactions.get(index).getAmount(),transactions.get(index).getToAccountID(),password);
+				if (type == "withdraw") {
+					deposit(transactions.get(index).getAmount(), transactions.get(index).getToAccountID(), password);
 					transactions.get(index).setStatus("Reversed");
 					return true;
+				}
+				if (type == "transfer") {
+					boolean succesWithdraw = withdraw(transactions.get(index).getAmount(),
+							transactions.get(index).getToAccountID(), password);
+					if (succesWithdraw) {
+						deposit(transactions.get(index).getAmount(), transactions.get(index).getFromAccountID(),
+								password);
+						transactions.get(index).setStatus("Reversed");
+						return true;
+					} else {
+						return false;
+					}
 				}
 
 			}
-		}else {
+		} else {
 			System.out.println("Incorrect Password");
 			return false;
 		}
 		return false;
 	}
-
 
 }

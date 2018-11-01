@@ -25,38 +25,71 @@ class TransactionStatement implements Transaction {
 		this.amount= amount;
 		this.type = type;
 		this.toAccountID = toAccountID;
-		this.fromAccountID = fromAccountID;
+		this.fromAccountID = fromaccountID;
 		this.walletID = walletID;
 		this.status = "active";
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see Transaction#getStatus()
+	 */
+	@Override
 	public String getStatus() {
 		return status;
 	}
+	/* (non-Javadoc)
+	 * @see Transaction#setStatus(java.lang.String)
+	 */
+	@Override
 	public void setStatus(String status) {
 		this.status = status;
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see Transaction#getWalletID()
+	 */
+	@Override
 	public int getWalletID() {
 		return walletID;
 	}
+	/* (non-Javadoc)
+	 * @see Transaction#setWalletID(int)
+	 */
+	@Override
 	public void setWalletID(int walletID) {
 		this.walletID = walletID;
 	}
+	/* (non-Javadoc)
+	 * @see Transaction#getToAccountID()
+	 */
+	@Override
 	public int getToAccountID() {
 		return toAccountID;
 	}
+	/* (non-Javadoc)
+	 * @see Transaction#setToAccountID(int)
+	 */
+	@Override
 	public void setToAccountID(int toAccountID) {
 		this.toAccountID = toAccountID;
 	}
+	/* (non-Javadoc)
+	 * @see Transaction#getFromAccountID()
+	 */
+	@Override
 	public int getFromAccountID() {
 		return fromAccountID;
 	}
+	/* (non-Javadoc)
+	 * @see Transaction#setFromAccountID(int)
+	 */
+	@Override
 	public void setFromAccountID(int fromAccountID) {
 		this.fromAccountID = fromAccountID;
 	}
+
 	/* (non-Javadoc)
 	 * @see Transaction#getTransactionID()
 	 */
@@ -64,6 +97,7 @@ class TransactionStatement implements Transaction {
 	public int getTransactionID() {
 		return transactionID;
 	}
+
 	/* (non-Javadoc)
 	 * @see Transaction#setTransactionID(int)
 	 */
@@ -71,6 +105,7 @@ class TransactionStatement implements Transaction {
 	public void setTransactionID(int transactionID) {
 		this.transactionID = transactionID;
 	}
+
 	/* (non-Javadoc)
 	 * @see Transaction#getType()
 	 */
@@ -78,6 +113,7 @@ class TransactionStatement implements Transaction {
 	public String getType() {
 		return type;
 	}
+
 	/* (non-Javadoc)
 	 * @see Transaction#setType(java.lang.String)
 	 */
@@ -85,6 +121,7 @@ class TransactionStatement implements Transaction {
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	/* (non-Javadoc)
 	 * @see Transaction#getAmount()
 	 */
@@ -92,6 +129,7 @@ class TransactionStatement implements Transaction {
 	public double getAmount() {
 		return amount;
 	}
+
 	/* (non-Javadoc)
 	 * @see Transaction#setAmount(double)
 	 */
