@@ -78,18 +78,13 @@ public class WalletUnitTest {
     public void WithdrawNotSufficientTest() {
 		Wallet walletTest =new Wallet("daniel","montreal",1,"daniel");
     	int Account1 = walletTest.AddTransactionAccount("Checking", 500,"daniel");
-    	
-    	boolean result =walletTest.withdraw(600, Account1, "daniel");
-    	
-    	
+	
+    	InsufficientFundException result =assertThrows(InsufficientFundException.class,() -> walletTest.withdraw(600, Account1, "daniel"));
+
     	// assert statements
     	assertEquals(500, walletTest.transactionAccounts.get(Account1).getBalance(),0);
-    	assertEquals(false,result);
         
     }
-	
-
-	
 
 	
 	@Test
@@ -243,14 +238,13 @@ public class WalletUnitTest {
     	
     	boolean result1 = walletTest.TransferToAccount(Account1, Account2, 100, "daniel");
     	walletTest.withdraw(600, Account2, "daniel");
-    	boolean result2 =walletTest.transactionReversal(walletTest.getTransactions().get(0).getTransactionID(),"daniel");
+    	InsufficientFundException result2 =assertThrows(InsufficientFundException.class,() -> walletTest.transactionReversal(walletTest.getTransactions().get(0).getTransactionID(),"daniel"));
 
     	
     	// assert statements
         assertEquals(400, walletTest.getTotalBalance(),0);
         assertEquals(400, walletTest.getAccount(Account1, "daniel").getBalance(),0);
         assertEquals(0, walletTest.getAccount(Account2, "daniel").getBalance(),0);
-        assertEquals(true,result1);
-        assertEquals(false,result2);
+
     }
 }

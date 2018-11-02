@@ -237,11 +237,15 @@ public class Wallet implements WalletLibraryInterface {
 		boolean result = false;
 		if (this.password == password) {
 			if (transactionAccounts.containsValue(t)) {
+				try {
 				result = t.withdraw(amount);
 				transactions
 						.add(new TransactionStatement(amount, "withdraw", t.getTransactionAccountID(), this.walletID));
 				calculateTotalBalance();
 				return result;
+				}catch (InsufficientFundException e) {
+					throw e;
+				}
 			} else {
 				System.out.println("This account does not exist in this wallet");
 				return result;
@@ -261,10 +265,14 @@ public class Wallet implements WalletLibraryInterface {
 	public synchronized boolean withdraw(double amount, int accountID, String password) {
 		boolean result = false;
 		if (this.password == password) {
+			try {
 			result = transactionAccounts.get(accountID).withdraw(amount);
 			transactions.add(new TransactionStatement(amount, "withdraw", accountID, this.walletID));
 			calculateTotalBalance();
 			return result;
+			}		catch (InsufficientFundException e) {
+				throw e;
+			}
 		} else {
 			System.out.println("Incorrect Password");
 			return result;

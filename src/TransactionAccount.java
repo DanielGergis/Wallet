@@ -117,8 +117,8 @@ class TransactionAccount implements Account {
 			return false;
 		} else if (withdrawalAmount > balance) {
 			System.out.println("No Sufficient fund to complete the transaction");
-			return false;
-
+            throw new InsufficientFundException(
+                    "Current balance " + balance+" is less than requested amount " + withdrawalAmount);
 		}
 
 		else {
