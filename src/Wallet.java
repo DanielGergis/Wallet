@@ -275,7 +275,7 @@ public class Wallet implements WalletLibraryInterface {
 			}
 		} else {
 			System.out.println("Incorrect Password");
-			return result;
+			throw new InvalidAccountException("Incorect password for this account: "+accountID);
 		}
 	}
 
@@ -300,7 +300,7 @@ public class Wallet implements WalletLibraryInterface {
 			}
 		} else {
 			System.out.println("Incorrect Password");
-			return result;
+			throw new InvalidAccountException("Incorect password for this account: "+t.getWalletID());
 		}
 	}
 
@@ -319,7 +319,7 @@ public class Wallet implements WalletLibraryInterface {
 			return result;
 		} else {
 			System.out.println("Incorrect Password");
-			return result;
+			throw new InvalidAccountException("Incorect password for this account: "+accountID);
 		}
 	}
 
@@ -351,7 +351,7 @@ public class Wallet implements WalletLibraryInterface {
 			}
 		} else {
 			System.out.println("Incorrect Password");
-			return result;
+			throw new InvalidAccountException("Incorect password for this account: "+this.walletID);
 		}
 		return result;
 	}
@@ -407,7 +407,7 @@ public class Wallet implements WalletLibraryInterface {
 			}
 		} else {
 			System.out.println("Incorrect Password");
-			return result;
+			throw new InvalidAccountException("Incorect password for this account: "+accountID);
 		}
 	}
 
@@ -439,7 +439,7 @@ public class Wallet implements WalletLibraryInterface {
 			}
 		} else {
 			System.out.println("Incorrect Password");
-			return result;
+			throw new InvalidAccountException("Incorect password for this account: "+this.walletID);
 		}
 		return result;
 	}
@@ -460,7 +460,7 @@ public class Wallet implements WalletLibraryInterface {
 			return result;
 		} else {
 			System.out.println("Incorrect Password");
-			return false;
+			throw new InvalidAccountException("Incorect password for this account: "+this.walletID);
 		}
 	}
 
@@ -494,8 +494,7 @@ public class Wallet implements WalletLibraryInterface {
 				return new TransactionAccount("Undefined", id, this.walletID);
 			}
 		} else {
-			System.out.println("Incorrect Password");
-			return new TransactionAccount("Undefined", id, this.walletID);
+			throw new InvalidAccountException("Incorect password for this account: "+this.walletID);
 		}
 	}
 
@@ -544,7 +543,7 @@ public class Wallet implements WalletLibraryInterface {
 			}
 		} else {
 			System.out.println("Incorrect Password");
-			return false;
+			throw new InvalidAccountException("Incorect password for this account: "+this.walletID);
 		}
 		return false;
 	}

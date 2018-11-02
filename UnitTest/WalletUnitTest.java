@@ -79,10 +79,10 @@ public class WalletUnitTest {
 		Wallet walletTest =new Wallet("daniel","montreal",1,"daniel");
     	int Account1 = walletTest.AddTransactionAccount("Checking", 500,"daniel");
 	
-    	InsufficientFundException result =assertThrows(InsufficientFundException.class,() -> walletTest.withdraw(600, Account1, "daniel"));
-
     	// assert statements
     	assertEquals(500, walletTest.transactionAccounts.get(Account1).getBalance(),0);
+    	assertThrows(InsufficientFundException.class,() -> walletTest.withdraw(600, Account1, "daniel"));
+
         
     }
 
@@ -238,13 +238,24 @@ public class WalletUnitTest {
     	
     	boolean result1 = walletTest.TransferToAccount(Account1, Account2, 100, "daniel");
     	walletTest.withdraw(600, Account2, "daniel");
-    	InsufficientFundException result2 =assertThrows(InsufficientFundException.class,() -> walletTest.transactionReversal(walletTest.getTransactions().get(0).getTransactionID(),"daniel"));
-
+    	
     	
     	// assert statements
+    	assertThrows(InsufficientFundException.class,() -> walletTest.transactionReversal(walletTest.getTransactions().get(0).getTransactionID(),"daniel"));
         assertEquals(400, walletTest.getTotalBalance(),0);
         assertEquals(400, walletTest.getAccount(Account1, "daniel").getBalance(),0);
         assertEquals(0, walletTest.getAccount(Account2, "daniel").getBalance(),0);
 
     }
+	@Test
+    public void IncorrectPasswordTest() {
+		Wallet walletTest =new Wallet("daniel","montreal",1,"daniel");
+    	int Account1 = walletTest.AddTransactionAccount("Checking", 500,"daniel");
+    	
+    	
+    	
+    	// assert statements
+    	assertThrows(InvalidAccountException.class,()->walletTest.withdraw(100, Account1, "dani"));
+	}
+       
 }
